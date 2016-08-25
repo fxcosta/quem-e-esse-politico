@@ -1,0 +1,47 @@
+<!--
+  Generated template for the DetailsPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-navbar *navbar>
+  <ion-title>
+    {{ polician.name }}
+  </ion-title>
+  <ion-nav-back-button>
+  </ion-nav-back-button>
+</ion-navbar>
+
+<ion-content>
+
+  <ion-card>
+    <img src="img/nin-live.png"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{polician.name}}
+      </ion-card-title>
+      <p>
+        CPF: {{polician.cpf}}
+      </p>
+      <p>
+        Email: {{polician.email}}
+      </p>
+      <p>
+        Nascimento: {{polician.place_of_birth}}
+      </p>
+      <p>
+        Atuação: {{polician.state.name}}
+      </p>
+      <p>
+      Último partido: {{polician.political_parties[0].political_party.name}}
+      </p>
+
+    </ion-card-content>
+  </ion-card>
+
+  <button (click)="goBack()">
+    There's no place like home
+  </button>
+  <div padding [innerHTML]="readme"></div>
+</ion-content>

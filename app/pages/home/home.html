@@ -25,4 +25,13 @@
     <button click (click)="getPolicians()">Buscar</button>
   </div>
 
+  <ion-card *ngFor="let polician of foundPolicians" (click)="goToDetails(polician)">
+    <ion-card-header>
+      {{ polician.name }}
+    </ion-card-header>
+    <ion-card-content>
+      {{ polician.cpf }}
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
