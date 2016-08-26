@@ -1,37 +1,51 @@
+<!-- 
 <ion-header>
   <ion-navbar>
     <ion-title>Home</ion-title>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content padding class="home">
-  <h2>Welcome to Ionic!</h2>
+  <h2>Quem é esse politico?</h2>
   <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>app/</code> directory to add or change tabs,
-    update any existing page or create new pages.
+    Surgiu um nome novo na politica? Viu um candidato mas não o conhece bem?
+    Busque maiores informações pelo nome dele e o conheça um pouco melhor.
   </p>
 
   <ion-list inset>
     <ion-item>
-    <ion-label>Nome do político:</ion-label>
+    <ion-label floating>Nome do político</ion-label>
       <ion-input [(ngModel)]="username" type="text"></ion-input>
+    </ion-item>
+        <ion-item>
+    <ion-label floating>Estado</ion-label>
+      <ion-input [(ngModel)]="estado" type="text"></ion-input>
     </ion-item>
   </ion-list>
   <div padding>
-    <button click (click)="getPolicians()">Buscar</button>
+    <button block click (click)="getPolicians()">Buscar</button>
   </div>
 
-  <ion-card *ngFor="let polician of foundPolicians" (click)="goToDetails(polician)">
+<!--   <ion-card *ngFor="let polician of foundPolicians" (click)="goToDetails(polician)">
     <ion-card-header>
       {{ polician.name }}
     </ion-card-header>
     <ion-card-content>
       {{ polician.cpf }}
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
+
+<ion-list>
+  <ion-item *ngFor="let polician of foundPolicians">
+<!--     <ion-thumbnail item-left>
+      <img src="img/thumbnail-totoro.png">
+    </ion-thumbnail> -->
+    <h2>{{ polician.name }}</h2>
+    <p>{{ polician.cpf }}</p>
+    <p>{{ polician.state.name }}</p>
+    <!-- <button block [navPush]="pushPage" [navParams]="polician">Go</button> -->
+    <button light block click (click)="goToDetails(polician)">Detalhes</button>
+  </ion-item>
+</ion-list>
 
 </ion-content>

@@ -10,6 +10,7 @@ import {HomePage} from './pages/home/home';
 
 export class MyApp {
 
+  @ViewChild('myNav') nav : NavController
   private rootPage: any;
 
   constructor(private platform: Platform) {

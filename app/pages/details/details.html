@@ -24,24 +24,24 @@
       <p>
         CPF: {{polician.cpf}}
       </p>
-      <p>
+      <p *ngIf="polician.email !== null">
         Email: {{polician.email}}
       </p>
       <p>
-        Nascimento: {{polician.place_of_birth}}
+        Nasceu em: {{polician.place_of_birth}}
       </p>
       <p>
-        Atuação: {{polician.state.name}}
+        Atua em: {{polician.state.name}}
       </p>
       <p>
-      Último partido: {{polician.political_parties[0].political_party.name}}
+        Partido Atual: {{polician.political_parties[0].political_party.name}}
       </p>
 
     </ion-card-content>
   </ion-card>
 
-  <button (click)="goBack()">
-    There's no place like home
+  <button block click (click)="goBack()">
+    Voltar
   </button>
   <div padding [innerHTML]="readme"></div>
 </ion-content>

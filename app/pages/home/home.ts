@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController, LoadingController} from 'ionic-angular';
 import {PoliticoService} from '../../services/politico';
 import {DetailsPage} from '../details/details';
+import { Keyboard } from 'ionic-native';
 
 @Component({
 	templateUrl: 'build/pages/home/home.html',
@@ -12,24 +13,38 @@ export class HomePage {
 
 	public foundPolicians;
 	public username;
+	public estado;
 
-	constructor(private navCtrl: NavController, private politico: PoliticoService) {}
+	public pushPage = DetailsPage;
+
+	constructor(
+		public navCtrl: NavController, 
+		private politico: PoliticoService,
+		public loadingCtrl: LoadingController) {
+
+		Keyboard.hideKeyboardAccessoryBar(true);
+	}
 
 	getPolicians() {
+		let loading = this.loadingCtrl.create(
+		{
+			content: "Aguarde! Estamos procurando...",
+		// 	duration: 5000,
+			dismissOnPageChange: true
+		}
+		);
+
+
+		this.navCtrl.push(loading.present());
+
 		this.politico.getPolicians(this.username).subscribe(
 			data => {
-				// var arr = Object.keys(this.foundPolicians).map(function(k) { return this.foundPolicians[k] });
 				this.foundPolicians = data.json();
 				this.foundPolicians = this.foundPolicians.objects;
-
-				// this.foundPolicians.forEach(function (current, index, value) {
-					// console.log(current);
-				// });
-
 			},
 			err => console.error(err),
-			() => console.log('getRepos competed')
-		);
+			() => loading.dismiss() && console.log('ops')
+			);
 	}
 
 	goToDetails(polician) {

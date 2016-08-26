@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PoliticoService } from '../../services/politico';
+import { HomePage } from '../../pages/home/home';
 
 /*
   Generated class for the DetailsPage page.
@@ -17,13 +18,14 @@ import { PoliticoService } from '../../services/politico';
     public readme = '';
     public polician;
 
-    constructor(private navCtrl: NavController,
+    constructor(
+      private homePage: HomePage,
+      public navCtrl: NavController,
       private github: PoliticoService,
       private navParams: NavParams) {
 
-      this.polician = navParams.get('polician');
 
-      console.log(this.polician);
+      this.polician = navParams.get('polician');
 
       // this.github.getDetails(this.polician).subscribe(
       //   data => {
@@ -39,6 +41,10 @@ import { PoliticoService } from '../../services/politico';
       //   },
       //   () => console.log('getDetails completed')
       //   );
+    }
+
+    goBack() {
+      this.navCtrl.push(HomePage);
     }
 
   }
