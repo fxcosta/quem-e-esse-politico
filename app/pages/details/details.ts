@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PoliticoService } from '../../services/politico';
-import { HomePage } from '../../pages/home/home';
+import { HomePage } from '../home/home';
 
 /*
   Generated class for the DetailsPage page.
@@ -19,7 +19,6 @@ import { HomePage } from '../../pages/home/home';
     public polician;
 
     constructor(
-      private homePage: HomePage,
       public navCtrl: NavController,
       private github: PoliticoService,
       private navParams: NavParams) {

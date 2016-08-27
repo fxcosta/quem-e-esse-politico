@@ -15,11 +15,9 @@ export class HomePage {
 	public username;
 	public estado;
 
-	public pushPage = DetailsPage;
-
 	constructor(
 		public navCtrl: NavController, 
-		private politico: PoliticoService,
+		public politico: PoliticoService,
 		public loadingCtrl: LoadingController) {
 
 		Keyboard.hideKeyboardAccessoryBar(true);
@@ -35,7 +33,9 @@ export class HomePage {
 		);
 
 
-		this.navCtrl.push(loading.present());
+		loading.present();
+		// not do it, ok?! :D
+		// this.navCtrl.push(loading.present());
 
 		this.politico.getPolicians(this.username).subscribe(
 			data => {
