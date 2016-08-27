@@ -18,6 +18,17 @@ import 'rxjs/add/operator/map';
       return policians;
     }
 
+    
+    filterByState(data, state) {
+      var newData = [];
+
+      newData = data.filter(function (data) {
+        return data.state.name === state;
+      });
+
+      return newData;
+    }
+
     getDetails(repo) {
       let headers = new Headers();
       headers.append('Accept', 'application/vnd.github.VERSION.html');

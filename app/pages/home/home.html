@@ -14,8 +14,19 @@
 
   <ion-list inset>
     <ion-item>
-    <ion-label floating>Nome do político</ion-label>
+      <ion-label floating>Nome do político</ion-label>
       <ion-input [(ngModel)]="username" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Estado</ion-label>
+      <ion-select [(ngModel)]="estado">
+      <ion-option value="Bahia">Bahia</ion-option>
+        <ion-option value="São Paulo">São Paulo</ion-option>
+        <ion-option value="Paraná">Paraná</ion-option>
+        <ion-option value="Rio de Janeiro">Rio de Janeiro</ion-option>
+        <ion-option value="Pernambuco">Pernambuco</ion-option>
+        <ion-option value="Ceará">Ceará</ion-option>
+      </ion-select>
     </ion-item>
   </ion-list>
   <div padding>
@@ -31,8 +42,8 @@
     </ion-card-content>
   </ion-card> -->
 
-<ion-list>
-  <ion-item *ngFor="let polician of foundPolicians">
+  <ion-list>
+    <ion-item *ngFor="let polician of foundPolicians">
 <!--     <ion-thumbnail item-left>
       <img src="img/thumbnail-totoro.png">
     </ion-thumbnail> -->

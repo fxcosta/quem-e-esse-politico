@@ -40,7 +40,7 @@ export class HomePage {
 		this.politico.getPolicians(this.username).subscribe(
 			data => {
 				this.foundPolicians = data.json();
-				this.foundPolicians = this.foundPolicians.objects;
+				this.foundPolicians = this.politico.filterByState(this.foundPolicians.objects, this.estado);
 			},
 			err => console.error(err),
 			() => loading.dismiss() && console.log('ops')
